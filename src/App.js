@@ -1,24 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import './App.css';
+import React from "react"
+import Header from "./components/header"
+import Footer from "./components/footer"
+import Page from "./components/page"
+import NotFound from "./components/not-found"
+import { BrowserRouter, Route } from 'react-router-dom';
+
+const getLanguage = () => {
+  const location = navigator.language;
+  console.log(location.pathname);
+}
+const getPageData = () => {
+
+}
+const App = () => {
+  getLanguage()
+  let location = useLocation();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <head>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+      </head>
+      <div className="flex-container">
+        <Header />
+        <div className="flex grow">
+          <div className="flex column p-6 w-full">
+            <BrowserRouter>
+              <Route path="/">
+                <Page ...pageData(index) />
+              </Route>
+
+              <Route path="/*">
+                <Page />
+              </Route>
+
+              <Route component={NotFound} />
+
+            </BrowserRouter>
+          </div>
+          <Footer />
+        </div>
+      </div>
+    </>
   );
 }
 

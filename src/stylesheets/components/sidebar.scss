@@ -1,0 +1,24 @@
+.sidebar {
+    ul#mysidebar {
+        list-style-type: none;
+        & > li.categoryfolder {
+            .itemdetails:after {
+                transition: transform 0.25s ease-out;
+                content: "\f054";
+                font-size: 13px;
+                font-family: 'FontAwesome';
+            }
+            &>.canOpen:after {
+                transition: transform 0.25s ease-out;
+                content: "\f078";
+            }
+
+            .itemdetails {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+    }
+}
