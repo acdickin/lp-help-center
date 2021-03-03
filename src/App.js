@@ -1,22 +1,23 @@
-
-import './App.css';
-import React from "react"
+import React, { useState, useEffect } from "react"
 import Header from "./components/header"
 import Footer from "./components/footer"
 import Page from "./components/page"
-import NotFound from "./components/not-found"
+import Root from "./components/root"
+// import NotFound from "./components/not-found"
 import { BrowserRouter, Route } from 'react-router-dom';
-
-const getLanguage = () => {
-  const location = navigator.language;
-  console.log(location.pathname);
-}
-const getPageData = () => {
-
-}
+import "./stylesheets/main.scss"
 const App = () => {
-  getLanguage()
-  let location = useLocation();
+  const [mode, setMode] = useState('light')
+
+  // Handles setting dark/ light mode
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.body.classList.remove('light');
+      document.body.classList.remove('dark');
+      document.body.classList.add(mode);
+      window.localStorage.setItem('jlmode', mode)
+    }
+  }, [mode])
 
   return (
     <>
@@ -24,24 +25,16 @@ const App = () => {
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
       </head>
       <div className="flex-container">
-        <Header />
+        <Header mode={mode} setMode={setMode} />
         <div className="flex grow">
-          <div className="flex column p-6 w-full">
+          <div className="flex column w-full">
             <BrowserRouter>
-              <Route path="/">
-                <Page ...pageData(index) />
-              </Route>
-
-              <Route path="/*">
-                <Page />
-              </Route>
-
-              <Route component={NotFound} />
-
+              <Route exact path="/" component={Root} />
+              <Route path="/:slug.html" component={Page} />
             </BrowserRouter>
           </div>
-          <Footer />
         </div>
+        <Footer />
       </div>
     </>
   );
