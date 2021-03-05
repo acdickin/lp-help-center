@@ -1,36 +1,44 @@
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ManagementClient } from '@kentico/kontent-management';
-const [languages, setLanguages] = useState()
-const client = new ManagementClient({
-  projectId: process.env.KONTENT_ID,
-  apiKey: process.env.KONTENT_API_KEY
-});
 
-useEffect(() => {
-  client.listLanguages()
-    .toObservable()
-    .subscribe((response) => {
-      setLanguages(response)
-    },
-      (error) => {
-        console.log(error);
-      });
-}, [])
+const LanguageSelector = ({ language, handleSetLanguage }) => {
+  const [languages, setLanguages] = useState()
+
+  const client = new ManagementClient({
+    projectId: process.env.REACT_APP_KONTENT_ID,
+    apiKey: process.env.REACT_APP_KONTENT_API_KEY
+  });
 
 
-const LanguageSelector = () => {
+  useEffect(() => {
+    client.listLanguages()
+      .toObservable()
+      .subscribe((response) => {
+        setLanguages(response.data.items)
+      },
+        (error) => {
+          console.log(error);
+        });
+  }, [])
+
   const renderOptions = (languages) => {
-    return languages.map(language => {
-      if (language.is_active) {
-        return <option value={language.codename} onClick={setLanguage}>{language.name}</option>
-      }
-    })
+    let options = []
+    if (languages) {
+      options = languages.map(lang => {
+        if (lang.isActive) {
+          return <option key={lang.codename} value={lang.codename}>{lang.name}</option>
+        }
+      })
+    }
+    return options
   }
   return (
-    <select>
-      {renderOptions(languages)}
-    </select>
+    <div className="custom-select" style={{ border: 'solid #fe5e00 1px' }}>
+      <select value={language} onChange={e => handleSetLanguage(e.target.value)}>
+        {renderOptions(languages)}
+      </select>
+    </div >
   )
 }
 

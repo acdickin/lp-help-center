@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react"
 import ContentHeader from "./content-header"
 import { deliveryClient } from "../config";
 
-const Page = ({ match, history }) => {
+const Page = ({ match, history, language }) => {
   // Uses the react state hook
   const [article, setArticle] = useState({});
   const [isLoading, setLoading] = useState(true);
   // Gets an article by its URL slug
-  const getArticle = (slug) => {
+  const getArticle = (slug, language) => {
     return deliveryClient
       .items('product_overview')
+      .languageParameter(language)
       .equalsFilter("elements.url", slug)
       .toObservable()
       .subscribe((response) => {
@@ -17,22 +18,17 @@ const Page = ({ match, history }) => {
         setLoading(false);
       });
   };
-
+  console.log("current lang", language)
   useEffect(() => {
     if (match?.params?.slug) {
-      let theSlug = match.params.slug.replace('.html', '')
-      console.log(theSlug)
-      const subscription = getArticle(theSlug);
+      const basicSlug = match.params.slug.replace('.html', '')
+      const subscription = getArticle(basicSlug, language);
       return () => subscription.unsubscribe();
     }
   }, [match]);
-
-  console.log("isloading", isLoading)
   if (isLoading) {
-    console.log("show loading")
     return <div>Loading...</div>;
   } else if (article && article !== {}) {
-    console.log("dont show loading")
     return (
       <div className="flex">
         <div>
