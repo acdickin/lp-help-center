@@ -1,33 +1,49 @@
 import React, { useEffect, useState } from "react"
 import ContentHeader from "./content-header"
+import NotFound from "./not-found"
 import { deliveryClient } from "../config";
 
-const Page = ({ match, history, language }) => {
+const Page = ({ match, history, language, lookupTable }) => {
   // Uses the react state hook
   const [article, setArticle] = useState({});
   const [isLoading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false)
   // Gets an article by its URL slug
-  const getArticle = (slug, language) => {
-    return deliveryClient
-      .items('product_overview')
-      .languageParameter(language)
-      .equalsFilter("elements.url", slug)
-      .toObservable()
-      .subscribe((response) => {
-        setArticle(response.items[0]);
-        setLoading(false);
-      });
+
+  //byItemId
+  const getArticle = (id, language) => {
+
+    if (id !== undefined) {
+      return deliveryClient
+        .items('product_overview')
+        .languageParameter(language)
+        .equalsFilter("system.id", id)
+        .toObservable()
+        .subscribe((response) => {
+          setArticle(response.items[0]);
+          setLoading(false);
+        });
+    }
   };
-  console.log("current lang", language)
   useEffect(() => {
+    // this may need to move to app so we can route to not-found page
     if (match?.params?.slug) {
       const basicSlug = match.params.slug.replace('.html', '')
-      const subscription = getArticle(basicSlug, language);
-      return () => subscription.unsubscribe();
+      const id = lookupTable.get(basicSlug)
+      if (id) {
+        const subscription = getArticle(id, language);
+        return () => subscription.unsubscribe();
+      } else {
+        // id not in loopup table. go to 404
+        setLoading(false)
+        setNotFound(true)
+      }
     }
   }, [match]);
   if (isLoading) {
     return <div>Loading...</div>;
+  } else if (notFound) {
+    return (<NotFound />)
   } else if (article && article !== {}) {
     return (
       <div className="flex">
