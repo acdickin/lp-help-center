@@ -43,17 +43,17 @@ const App = () => {
 
   const createLookUptable = (list, breadcrumb) => {
     list.forEach(item => {
+      let newBreadcrumb = (breadcrumb === '') ? item.url.value : `${breadcrumb}-${item.url.value}`
       // handles folders
       if (item.system.type === "navigation_item") {
-        let newBreadcrumb = (breadcrumb === '') ? item.url.value : `${breadcrumb}-${item.url.value}`
+
         if (item.subitems.value) {
           return createLookUptable(item.subitems.value, newBreadcrumb)
         }
       }
       //handles leafs
       else {
-        let url = breadcrumb + item.url.value
-        setLookupTable(new Map(lookupTable.set(url, item.system.id)))
+        setLookupTable(new Map(lookupTable.set(newBreadcrumb, item.system.id)))
       }
     })
   }
@@ -70,7 +70,7 @@ const App = () => {
         setNavigationList(response.items[0].subitems.value)
       });
   };
-
+  console.log(lookupTable)
   return (
     <>
       <head>
@@ -80,7 +80,7 @@ const App = () => {
         <div className="flex-container">
           <Header mode={mode} setMode={setMode} language={language} setLanguage={setLanguage} />
           <div className="flex grow">
-            <Sidebar navigationList={navigationList} lookupTable={lookupTable} />
+            <Sidebar navigationList={navigationList} />
             <div className="flex column w-full">
               <Switch>
                 <Route exact path="/" component={Root} />
