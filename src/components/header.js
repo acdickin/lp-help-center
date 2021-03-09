@@ -1,6 +1,7 @@
 
 
-import React, { useState } from "react"
+import React from "react"
+import { Link } from "react-router-dom"
 // import Search from "./search"
 import logo from "../images/lp-logo.svg"
 import LanguageSelector from './language-selector'
@@ -23,9 +24,9 @@ const Header = ({ setMode, mode, setLanguage, language }) => {
   return (
     <div className="header flex align-center justify-between">
       <div id="logocontainer">
-        <a href="/" className="flex">
-          <img src={logo} />
-        </a>
+        <Link to="/" className="flex">
+          <img alt="liveperson logo" src={logo} />
+        </Link>
       </div>
       <div className="flex align-center justify-between gap">
         <LanguageSelector handleSetLanguage={handleSetLanguage} language={language} />
@@ -37,6 +38,8 @@ const Header = ({ setMode, mode, setLanguage, language }) => {
             <a
               className="flex"
               target="_blank"
+              rel="noreferrer"
+              alt="liveperson login"
               href="https://liveengage.liveperson.net"
             >
               LivePerson login
