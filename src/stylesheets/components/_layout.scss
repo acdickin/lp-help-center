@@ -27,9 +27,9 @@
   text-transform: uppercase;
   font-size: var(--space4);
   margin: 0 0 var(--space-unit) 0;
-  padding: var(--space3) var(--space4);
   z-index: 1;
-  border-radius: 5px;
+  border-radius: 9999px;
+  padding: .75rem 1.25rem;
 }
 
 body {
