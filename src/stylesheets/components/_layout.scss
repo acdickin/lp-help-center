@@ -147,3 +147,7 @@ body {
     width: 100%;
   }
 }
+
+.button {
+  @include lp-button;
+}
