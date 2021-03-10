@@ -36,7 +36,7 @@ const Header = ({ setMode, mode, setLanguage, language }) => {
           </button>
           <span id="login" className="homebutton">
             <a
-              className="flex"
+              className="flex button"
               target="_blank"
               rel="noreferrer"
               alt="liveperson login"

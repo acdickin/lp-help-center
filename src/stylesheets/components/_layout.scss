@@ -19,6 +19,19 @@
   margin: 0 0 var(--space-unit) 0;
   z-index: 1;
 }
+@mixin lp-button {
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  background-color: var(--textTitle);
+  color: var(--bg-hero);
+  text-transform: uppercase;
+  font-size: var(--space4);
+  margin: 0 0 var(--space-unit) 0;
+  z-index: 1;
+  border-radius: 9999px;
+  padding: .75rem 1.25rem;
+}
+
 body {
   font-family: "Roboto", "Helvetica";
   .hero {
@@ -81,12 +94,19 @@ body {
 .flex {
   display: flex;
 }
+
 .column {
   flex-direction: column;
 }
+
 .align-center {
   align-items: center;
 }
+
+.align-start {
+  align-items: flex-start;
+}
+
 .space-between {
   justify-content: space-between;
 }
@@ -99,15 +119,35 @@ body {
   justify-content: center;
 }
 
+.justify-around {
+  justify-content: space-around;
+}
+
 .flex-wrap {
   flex-wrap: wrap;
 }
+
 .grow {
   flex-grow: 1;
 }
+
 .full-width {
   width: 100%;
 }
+
+.full-screen {
+  height: 100%;
+  width: 100%;
+  min-height: 80vh;
+}
+
 .half-width {
   width: 50%;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+.button {
+  @include lp-button;
 }

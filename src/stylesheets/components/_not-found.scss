@@ -1,0 +1,21 @@
+body {
+    .lp-container {
+        .notfound {
+            padding: 0 2vw;
+            h2 {
+                font-size: 50px;
+                margin-bottom: var(--space3)
+            }
+            p {
+                margin-bottom: var(--space6)
+            }
+            a {
+                @include lp-button;
+            }
+            @media (max-width: 767px) {
+                padding: 2vw;
+                flex-direction: column-reverse;
+              }
+        }
+    }
+}

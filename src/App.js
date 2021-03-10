@@ -77,11 +77,11 @@ const App = () => {
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
       </head>
       <BrowserRouter>
-        <div className="flex-container">
+        <div className="lp-container">
           <Header mode={mode} setMode={setMode} language={language} setLanguage={setLanguage} />
           <div className="flex grow">
             <Sidebar navigationList={navigationList} />
-            <div className="flex column w-full">
+            <div className="flex column full-width">
               <Switch>
                 <Route exact path="/" component={Root} />
                 <Route path="/:slug.html" component={(props) => <Page {...props} lookupTable={lookupTable} language={language} />} />
