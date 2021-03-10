@@ -80,7 +80,7 @@ const App = () => {
         <div className="lp-container">
           <Header mode={mode} setMode={setMode} language={language} setLanguage={setLanguage} />
           <div className="flex grow">
-            <Sidebar navigationList={navigationList} />
+            {/* <Sidebar navigationList={navigationList} /> */}
             <div className="flex column full-width">
               <Switch>
                 <Route exact path="/" component={Root} />

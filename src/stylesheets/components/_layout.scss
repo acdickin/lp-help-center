@@ -22,14 +22,22 @@
 @mixin lp-button {
   font-weight: 700;
   letter-spacing: 0.025em;
-  background-color: var(--textTitle);
-  color: var(--bg-hero);
+  color: var(--textTitle);
+  background-color: var(--bg-hero); 
+  border-color: var(--textTitle);
   text-transform: uppercase;
   font-size: var(--space4);
   margin: 0 0 var(--space-unit) 0;
   z-index: 1;
   border-radius: 9999px;
   padding: .75rem 1.25rem;
+  border: 1px solid var(--textTitle);
+  &:hover {
+
+    background-color: var(--textTitle);
+    color: var(--bg-hero);
+    border-color: var(--textTitle);
+  }
 }
 
 body {
