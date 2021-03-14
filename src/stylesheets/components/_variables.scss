@@ -31,6 +31,7 @@ body.dark {
   --textTitle: white;
   --textLink: var(--orange);
   --hr: hsla(0, 0%, 100%, 0.2);
+  --box-shadow: #5b628e26;
 
   background-color: var(--bg);
   color: var(--textNormal);
@@ -42,6 +43,7 @@ body.light {
   --textTitle: #090c43;
   --textLink: var(--light-blue);
   --hr: hsla(0, 0%, 0%, 0.2);
+  --box-shadow: #565a7126;
 
   background-color: var(--bg);
   color: var(--textNormal);
@@ -54,6 +56,9 @@ body.light {
 
 .section-space {
   padding: var(--space25) var(--space16);
+  @media (max-width: 767px) {
+    padding: var(--space10) var(--space10);
+  }
 }
 
 .navy {
@@ -66,4 +71,8 @@ body.light {
 
 .gap {
   gap: 14px;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
 }

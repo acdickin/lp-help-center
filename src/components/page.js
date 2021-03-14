@@ -41,7 +41,7 @@ const Page = ({ match, history, language, lookupTable }) => {
     }
   }, [match]);
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="flex align-center justify-center">Loading...</div>;
   } else if (notFound) {
     return (<NotFound />)
   } else if (article && article !== {}) {

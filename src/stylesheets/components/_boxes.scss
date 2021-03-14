@@ -5,9 +5,10 @@
         padding: var(--space12) var(--space8);
         width: 49%;
         flex-grow: 1;
-        box-shadow: 0 4px 24px 0 #565a7126;
+        box-shadow: 0 4px 24px 0 var(--box-shadow);
         transition-property: all;
         transition-duration: 200ms;
+        position: relative;
         &:hover {
             transform: translateY(-2px);
             box-shadow: 0 16px 60px 0 #565b7333;
@@ -15,21 +16,28 @@
         p {
             font-size: 0.9rem;
             line-height: 1.6;
-            color: #94979B;
-          }
+            color: #94979b;
+        }
+        .taxonomy {
+            position: absolute;
+            right: 1rem;
+            bottom: 1rem;
+            @media (max-width: 767px) {
+                position: initial;
+                margin-top:10px;
+              }
+        }
         .icon {
-            flex-basis: 15%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: 1rem;
-            background: rgba(140, 91, 216, 0.05);
+            background: var(--bg-hero);
             width: 4rem;
             height: 4rem;
             border-radius: 50%;
             img {
                 padding: 1rem;
-            
             }
         }
     }

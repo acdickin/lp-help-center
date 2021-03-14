@@ -11,7 +11,7 @@
 @mixin medium-text {
   font-family: "Roboto", "Helvetica";
   letter-spacing: 0.025em;
-  color: var(--primary-color);
+  color: var(--textTitle);
   margin: 0 0 var(--space-unit) 0;
   z-index: 1;
   font-size: 1.2rem;
@@ -23,7 +23,7 @@
   font-weight: 700;
   font-size: 0.875rem;
   letter-spacing: 0.025em;
-  color: var(--light-color);
+  color: var(--textTitle);
   text-transform: uppercase;
   font-size: var(--space4);
   margin: 0 0 var(--space-unit) 0;
@@ -39,7 +39,7 @@
   margin: 0 0 var(--space-unit) 0;
   z-index: 1;
   border-radius: 9999px;
-  padding: .75rem 1.25rem;
+  padding: 0.75rem 1.25rem;
 }
 
 body {
@@ -86,6 +86,8 @@ body {
   @media (max-width: 767px) {
     flex-basis: 100%;
     max-width: 100%;
+    position: absolute;
+    opacity: 0;
   }
 }
 .content {
@@ -110,6 +112,12 @@ body {
 
 .column {
   flex-direction: column;
+}
+
+.column-mobile {
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
 }
 
 .align-center {
@@ -163,4 +171,27 @@ body {
 
 .button {
   @include lp-button;
+}
+
+input.search {
+  border: 1px solid var(--hr);
+  border-radius: 4px;
+  min-width: 40vw;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  @include small-text;
+}
+
+.gap {
+  gap: 2rem;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+.gap-4 {
+  gap: 1rem;
 }
