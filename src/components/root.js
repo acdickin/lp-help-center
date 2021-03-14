@@ -20,9 +20,9 @@ const Root = () => {
       </section>
       <div className="divider"></div>
       <section className="boxes-block gap flex justify-between section-space flex-wrap">
-     <InformationBox title="Getting started with messaging" desc="Checklist for set up and configuration to get your messaging program running" icon="/images/clock.svg" id="1" />
+     <InformationBox title="Getting started with messaging" desc="Checklist for set up and configuration to get your messaging program running" icon="/images/speech-bubble.svg" id="1" />
      <InformationBox title="Ge messaging" desc="Checklist for set up and configuration to get your messaging program running" icon="/images/bank.svg" id="2" />
-     <InformationBox title="Getting started with messaging" desc="Checklist for set up and configuration to get your messaging program running" icon="/images/clock.svg" id="3" />
+     <InformationBox title="Getting started with messaging" desc="Checklist for set up and configuration to get your messaging program running" icon="/images/settings.svg" id="3" />
      <InformationBox title="Getting started with messaging" desc="Checklist for set up and configuration to get your messaging program running" icon="/images/clock.svg" id="4" />
      </section>
     </>

@@ -8,6 +8,16 @@
   margin: 0;
 }
 
+@mixin medium-text {
+  font-family: "Roboto", "Helvetica";
+  letter-spacing: 0.025em;
+  color: var(--primary-color);
+  margin: 0 0 var(--space-unit) 0;
+  z-index: 1;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.55;
+}
 @mixin small-text {
   font-family: "Roboto", "Helvetica";
   font-weight: 700;
@@ -51,6 +61,9 @@ body {
     img {
       width: 100%;
     }
+  }
+  h3 {
+    @include medium-text;
   }
 }
 
