@@ -1,4 +1,5 @@
 import React from "react"
+import InformationBox from "./information-box.js"
 import { Link } from "react-router-dom"
 
 
@@ -19,35 +20,11 @@ const Root = () => {
       </section>
       <div className="divider"></div>
       <section className="boxes-block gap flex justify-between section-space flex-wrap">
-        <div className="box flex column justify-center">
-          <h3>Getting started with messaging</h3>
-          <p>
-            Checklist for set up and configuration to get your messaging program
-            running
-        </p>
-        </div>
-        <div className="box flex column justify-center">
-          <h3>Getting started with messaging</h3>
-          <p>
-            Checklist for set up and configuration to get your messaging program
-            running
-        </p>
-        </div>
-        <div className="box flex column justify-center">
-          <h3>Getting started with messaging</h3>
-          <p>
-            Checklist for set up and configuration to get your messaging program
-            running
-        </p>
-        </div>
-        <div className="box flex column justify-center">
-          <h3>Getting started with messaging</h3>
-          <p>
-            Checklist for set up and configuration to get your messaging program
-            running
-        </p>
-        </div>
-      </section>
+     <InformationBox title="Getting started with messaging" desc="Checklist for set up and configuration to get your messaging program running" icon="/images/clock.svg" id="1" />
+     <InformationBox title="Ge messaging" desc="Checklist for set up and configuration to get your messaging program running" icon="/images/bank.svg" id="2" />
+     <InformationBox title="Getting started with messaging" desc="Checklist for set up and configuration to get your messaging program running" icon="/images/clock.svg" id="3" />
+     <InformationBox title="Getting started with messaging" desc="Checklist for set up and configuration to get your messaging program running" icon="/images/clock.svg" id="4" />
+     </section>
     </>
   )
 }
