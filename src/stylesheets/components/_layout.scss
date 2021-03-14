@@ -11,7 +11,7 @@
 @mixin medium-text {
   font-family: "Roboto", "Helvetica";
   letter-spacing: 0.025em;
-  color: var(--primary-color);
+  color: var(--textTitle);
   margin: 0 0 var(--space-unit) 0;
   z-index: 1;
   font-size: 1.2rem;
@@ -23,7 +23,7 @@
   font-weight: 700;
   font-size: 0.875rem;
   letter-spacing: 0.025em;
-  color: var(--light-color);
+  color: var(--textTitle);
   text-transform: uppercase;
   font-size: var(--space4);
   margin: 0 0 var(--space-unit) 0;
