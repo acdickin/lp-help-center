@@ -17,14 +17,14 @@ const InformationBox = ({ title, desc, icon, id }) => {
   }, []);
 
   return (
-    <div className="box flex justify-center ">
+    <div className="box flex column-mobile">
       <div className="icon">
         <img src={icon} alt="icon-text" />
       </div>
       <div>
         <h3>{title}</h3>
         <p>{desc}</p>
-        <p>{person} + read this post</p>
+        <p className="taxonomy">{person} + read this post</p>
       </div>
     </div>
   );

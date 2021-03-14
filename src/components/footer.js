@@ -8,12 +8,12 @@ const Footer = () => {
   return (
     <div className="footer flex align-center" id="defaultfooter">
       <div id="footerbottomrow" className="full-width">
-        <div className="flex space-between" id="footertext">
+        <div className="flex space-between column-mobile" id="footertext">
           <span className="footerbottomspan">
             &copy; {new Date().getFullYear()} LivePerson Inc. All rights
             reserved.
           </span>
-          <div className="footer-menu flex justify-between gap-4">
+          <div className="footer-menu flex justify-between align-center gap-4 column-mobile">
             <a href="https://www.liveperson.com/policies/copyright">
               Copyright
             </a>

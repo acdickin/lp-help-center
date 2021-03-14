@@ -5,18 +5,26 @@ import { Link } from "react-router-dom";
 const Root = () => {
   return (
     <>
-      <section className="hero flex justify-between section-space">
-        <div className="flex column justify-center">
-          <h4>Our new Help Center</h4>
-          <h1>Kontent CMS POC</h1>
+      <section className="hero flex justify-between column gap-2 section-space">
+        <div className="flex justify-between">
+          <div className="flex column justify-center">
+            <h4>Our new Help Center</h4>
+            <h1>Kontent CMS POC</h1>
+          </div>
+          <div>
+            <img
+              alt="heroimg"
+              src="https://d1hryyr5hiabsc.cloudfront.net/web2020/img/resources/book-resource-illo-rev.svg"
+            />
+          </div>
         </div>
-        <div>
-          <img
-            alt="heroimg"
-            src="https://d1hryyr5hiabsc.cloudfront.net/web2020/img/resources/book-resource-illo-rev.svg"
-          />
+        <div className="search flex justify-between align-center justify-center">
+          <div className="flex column justify-center">
+            <input className="search" placeholder="Search..."></input>
+          </div>
         </div>
       </section>
+
       <div className="divider"></div>
       <section className="boxes-block gap flex justify-between section-space flex-wrap">
         <InformationBox
@@ -43,6 +51,21 @@ const Root = () => {
           icon="/images/clock.svg"
           id="4"
         />
+      </section>
+      <div className="divider rotate-180"></div>
+      <section className="hero flex justify-between column gap-2 section-space">
+        <div className="flex justify-between">
+          <div className="flex column justify-center">
+            <h4>Our new Help Center</h4>
+            <h1>Kontent CMS POC</h1>
+          </div>
+          <div>
+            <img
+              alt="heroimg"
+              src="https://d1hryyr5hiabsc.cloudfront.net/web2020/img/resources/book-resource-illo-rev.svg"
+            />
+          </div>
+        </div>
       </section>
     </>
   );

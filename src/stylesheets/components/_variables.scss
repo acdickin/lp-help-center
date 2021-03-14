@@ -56,6 +56,9 @@ body.light {
 
 .section-space {
   padding: var(--space25) var(--space16);
+  @media (max-width: 767px) {
+    padding: var(--space10) var(--space10);
+  }
 }
 
 .navy {
@@ -68,4 +71,8 @@ body.light {
 
 .gap {
   gap: 14px;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
 }

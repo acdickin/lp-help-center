@@ -16,7 +16,7 @@ const Header = ({ setMode, mode, setLanguage, language }) => {
     setLanguage(lang);
   };
   return (
-    <div className="header flex align-center justify-between">
+    <div className="header flex align-center justify-between column-mobile">
       <div id="logocontainer">
         <Link to="/" className="flex">
           <img alt="liveperson logo" src={logo} />
