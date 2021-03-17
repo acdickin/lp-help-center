@@ -1,5 +1,8 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { useQuery } from '@apollo/client'
+import { NAVIGATION_QUERY } from '../queries/navigation'
+
 const FOLDER_NAME = [
   "categoryfolder",
   "subcategoryfolder",
@@ -13,7 +16,8 @@ const LEAF_NAME = [
   "level3"
 ];
 
-const Sidebar = ({ navigationList }) => {
+
+const Sidebar = ({ language }) => {
 
   const renderSubItem = (items, url, level) => {
     if (items) {
@@ -40,10 +44,16 @@ const Sidebar = ({ navigationList }) => {
       })
     }
   }
+  const { loading, error, data } = useQuery(NAVIGATION_QUERY, { variable: { languageCodeName: language } })
+
+  if (loading) {
+    return null
+  }
+
   return (
     <div className="sidebar block flex-wrap list-none" >
       <ul id="mysidebar">
-        {renderSubItem(navigationList, '', 0)}
+        {renderSubItem(data, '', 0)}
       </ul>
     </div>
   )

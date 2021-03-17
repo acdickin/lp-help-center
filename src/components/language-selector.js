@@ -1,26 +1,14 @@
 
 import React, { useState, useEffect } from 'react'
-import { ManagementClient } from '@kentico/kontent-management';
+import { useQuery } from '@apollo/client'
+import { LANGUAGES_QUERY } from '../queries/language'
 
 const LanguageSelector = ({ language, handleSetLanguage }) => {
-  const [languages, setLanguages] = useState()
-
-  const client = new ManagementClient({
-    projectId: process.env.REACT_APP_KONTENT_ID,
-    apiKey: process.env.REACT_APP_KONTENT_API_KEY
-  });
 
 
-  useEffect(() => {
-    client.listLanguages()
-      .toObservable()
-      .subscribe((response) => {
-        setLanguages(response.data.items)
-      },
-        (error) => {
-          console.log(error);
-        });
-  }, [])
+
+  const { data } = useQuery(LANGUAGES_QUERY)
+  // handleSetLanguage(data)
 
   const renderOptions = (languages) => {
     let options = []
@@ -36,7 +24,7 @@ const LanguageSelector = ({ language, handleSetLanguage }) => {
   return (
     <div className="custom-select" style={{ border: 'solid #fe5e00 1px' }}>
       <select value={language} onChange={e => handleSetLanguage(e.target.value)}>
-        {renderOptions(languages)}
+        {renderOptions(data)}
       </select>
     </div >
   )
