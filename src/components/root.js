@@ -1,6 +1,6 @@
 import React from "react";
 import InformationBox from "./information-box.js";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const Root = () => {
   return (

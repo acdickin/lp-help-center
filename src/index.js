@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloProvider } from '@apollo/react-hooks';
 const client = new ApolloClient({
+  cache: new InMemoryCache(),
   uri: 'localhost:8080/graphql'
 })
 ReactDOM.render(

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react" //, { useEffect, useState }
 import ContentHeader from "./content-header"
 import NotFound from "./not-found"
 import { useQuery } from '@apollo/client'
@@ -6,34 +6,10 @@ import { PAGE_QUERY } from '../queries/page'
 
 const Page = ({ match, history, language, lookupTable }) => {
 
-  //byItemId
-  // const getArticle = (id, language) => {
-
-  //   if (id !== undefined) {
-  //     return data
-  //   }
-  // };
 
   const basicSlug = match.params.slug.replace('.html', '')
   const id = lookupTable.get(basicSlug) || null;
   const { loading, error, data } = useQuery(PAGE_QUERY, { variables: { id: id, languageCodeName: language } })
-
-
-  // useEffect(() => {
-  //   // this may need to move to app so we can route to not-found page
-  //   if (match?.params?.slug) {
-  //     const basicSlug = match.params.slug.replace('.html', '')
-  //     const id = lookupTable.get(basicSlug)
-  //     if (id) {
-  //       const subscription = getArticle(id, language);
-  //       return () => subscription.unsubscribe();
-  //     } else {
-  //       // id not in loopup table. go to 404
-  //       setLoading(false)
-  //       setNotFound(true)
-  //     }
-  //   }
-  // }, [match]);
 
 
   if (loading) {

@@ -7,19 +7,22 @@ const LanguageSelector = ({ language, handleSetLanguage }) => {
 
 
 
-  const { data } = useQuery(LANGUAGES_QUERY)
+  const { loading, data } = useQuery(LANGUAGES_QUERY)
   // handleSetLanguage(data)
 
   const renderOptions = (languages) => {
     let options = []
     if (languages) {
-      options = languages.map(lang => {
+      options = languages.forEach(lang => {
         if (lang.isActive) {
           return <option key={lang.codename} value={lang.codename}>{lang.name}</option>
         }
       })
     }
     return options
+  }
+  if (loading) {
+    return null;
   }
   return (
     <div className="custom-select" style={{ border: 'solid #fe5e00 1px' }}>
