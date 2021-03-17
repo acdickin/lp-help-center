@@ -15,7 +15,7 @@ const Page = ({ match, history, language, lookupTable }) => {
   // };
 
   const basicSlug = match.params.slug.replace('.html', '')
-  const id = lookupTable.get(basicSlug)
+  const id = lookupTable.get(basicSlug) || null;
   const { loading, error, data } = useQuery(PAGE_QUERY, { variables: { id: id, languageCodeName: language } })
 
 
