@@ -44,8 +44,10 @@ const Sidebar = ({ language }) => {
       })
     }
   }
+  console.log(NAVIGATION_QUERY)
   const { loading, error, data } = useQuery(NAVIGATION_QUERY, { variable: { languageCodeName: language } })
-
+  console.log(data);
+  console.log(error)
   if (loading) {
     return null
   }
