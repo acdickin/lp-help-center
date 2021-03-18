@@ -29,8 +29,14 @@ h5,
 h6 {
     line-height: 1.2;
     font-weight: 700;
+    margin-bottom: var(--space3);
 }
-
+h2 {
+    margin: var(--space4) 0 var(--space3) !important;
+}
+p {
+    margin-bottom: var(--space4) !important;
+}
 a {
     text-decoration: none;
     font-weight: 700;
