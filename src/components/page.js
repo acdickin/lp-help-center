@@ -1,59 +1,40 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import ContentHeader from "./content-header"
 import NotFound from "./not-found"
-import { deliveryClient } from "../config";
+import { useQuery } from '@apollo/client'
+import { PAGE_QUERY } from '../queries/page'
 
 const Page = ({ match, history, language, lookupTable }) => {
-  // Uses the react state hook
-  const [article, setArticle] = useState({});
-  const [isLoading, setLoading] = useState(true);
-  const [notFound, setNotFound] = useState(false)
-  // Gets an article by its URL slug
 
-  //byItemId
-  const getArticle = (id, language) => {
+  const basicSlug = match.params.slug.replace('.html', '')
+  const id = lookupTable.size > 0 ? lookupTable.get(basicSlug) : null;
 
-    if (id !== undefined) {
-      return deliveryClient
-        .items('product_overview')
-        .languageParameter(language)
-        .equalsFilter("system.id", id)
-        .toObservable()
-        .subscribe((response) => {
-          setArticle(response.items[0]);
-          setLoading(false);
-        });
-    }
-  };
-  useEffect(() => {
-    // this may need to move to app so we can route to not-found page
-    if (match?.params?.slug) {
-      const basicSlug = match.params.slug.replace('.html', '')
-      const id = lookupTable.get(basicSlug)
-      if (id) {
-        const subscription = getArticle(id, language);
-        return () => subscription.unsubscribe();
-      } else {
-        // id not in loopup table. go to 404
-        setLoading(false)
-        setNotFound(true)
-      }
-    }
-  }, [match]);
-  if (isLoading) {
+  if (language && id) {
+    return (<PageRender lang={language} id={id} />)
+  }
+  else {
+    return null
+  }
+}
+
+// Can't call useQuery in conditional so created a sub component
+const PageRender = ({ lang, id }) => {
+  const { loading, error, data } = useQuery(PAGE_QUERY, { variables: { id: id, languageCodeName: lang } })
+  if (loading) {
     return <div className="flex align-center justify-center">Loading...</div>;
-  } else if (notFound) {
+  } else if (error) {
     return (<NotFound />)
-  } else if (article && article !== {}) {
+  } else if (data) {
+    const { title, why_the_product_is_useful, post_tags, body } = data.getPage;
     return (
       <div className="flex">
         <div>
           <ContentHeader
-            title={article.title}
-            why_the_product_is_useful={article.why_the_product_is_useful}
-            post_tags={article.post_tags}
+            title={title}
+            why_the_product_is_useful={why_the_product_is_useful}
+            post_tags={post_tags}
           />
-          <div dangerouslySetInnerHTML={{ __html: article.body.value }} />
+          <div dangerouslySetInnerHTML={{ __html: body.value }} />
         </div>
       </div>
     )
@@ -61,5 +42,4 @@ const Page = ({ match, history, language, lookupTable }) => {
     return (<div>Error</div>)
   }
 }
-
 export default Page

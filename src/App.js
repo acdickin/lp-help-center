@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from "react";
-import Header from "./components/header";
-import Footer from "./components/footer";
-import Page from "./components/page";
-import Sidebar from "./components/sidebar";
-import NotFound from "./components/not-found";
-import Root from "./components/root";
-import { deliveryClient } from "./config";
-// import NotFound from "./components/not-found"
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import "./stylesheets/main.scss";
+import React, { useState, useEffect } from "react"
+import Header from "./components/header"
+import Footer from "./components/footer"
+import Page from "./components/page"
+import Sidebar from "./components/sidebar"
+import NotFound from "./components/not-found"
+import Root from "./components/root"
+
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
+import "./stylesheets/main.scss"
 
 const App = () => {
-  const [mode, setMode] = useState("light");
-  const [language, setLanguage] = useState("en");
-  const [navigationList, setNavigationList] = useState(null);
+  const [mode, setMode] = useState('light')
+  const [language, setLanguage] = useState('en')
   const [lookupTable, setLookupTable] = useState(new Map());
 
   // Handles setting dark/ light mode
@@ -22,24 +21,8 @@ const App = () => {
       document.body.classList.remove("light");
       document.body.classList.remove("dark");
       document.body.classList.add(mode);
-      // localStorage.setItem('jlmode', mode)
     }
   }, [mode]);
-
-  // Handles language
-  useEffect(() => {
-    console.log("language was set to", language);
-    getNavigation(language);
-  }, [language]);
-
-  // Need to create a look up table so we can find the page id's
-  useEffect(() => {
-    if (navigationList !== null) {
-      // clear out old table as the language has changed
-      lookupTable.clear();
-      createLookUptable(navigationList, "");
-    }
-  }, [navigationList]);
 
   const createLookUptable = (list, breadcrumb) => {
     list.forEach((item) => {
@@ -58,19 +41,6 @@ const App = () => {
     });
   };
 
-  const getNavigation = (language) => {
-    return deliveryClient
-      .items()
-      .languageParameter(language)
-      .equalsFilter("items.system.language", language)
-      .depthParameter(5)
-      .equalsFilter("elements.title", "root")
-      .toObservable()
-      .subscribe((response) => {
-        setNavigationList(response.items[0].subitems.value);
-      });
-  };
-  console.log(lookupTable);
   return (
     <>
       <head>
@@ -88,7 +58,7 @@ const App = () => {
             setLanguage={setLanguage}
           />
           <div className="flex grow">
-            <Sidebar navigationList={navigationList} />
+            <Sidebar language={language} handleLookupTable={createLookUptable} />
             <div className="flex column full-width">
               <Switch>
                 <Route exact path="/" component={Root} />

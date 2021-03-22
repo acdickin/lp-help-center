@@ -11,8 +11,6 @@ const Header = ({ setMode, mode, setLanguage, language }) => {
     return mode === "light" ? setMode("dark") : setMode("light");
   };
   const handleSetLanguage = (lang) => {
-    console.log("clicked");
-    console.log("lang", lang);
     setLanguage(lang);
   };
   return (
