@@ -45,16 +45,16 @@ const Sidebar = ({ language, handleLookupTable }) => {
   }
 
 
-  const { error, loading, data } = useQuery(NAVIGATION_QUERY, { fetchPolicy: 'no-cache', variables: { languageCodeName: language } })
+  const { error, data } = useQuery(NAVIGATION_QUERY, { fetchPolicy: 'no-cache', variables: { languageCodeName: language } })
 
   useEffect(() => {
     if (data) {
       setNavigationArray(data.getNavigation)
-      handleLookupTable(data.getNavigation, '')
     }
-  }, [loading])
+  }, [data])
 
   if (navigationArray) {
+    handleLookupTable(navigationArray, '')
     return (
       <div className="sidebar block flex-wrap list-none" >
         <ul id="mysidebar">
