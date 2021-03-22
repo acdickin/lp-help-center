@@ -50,11 +50,11 @@ const Sidebar = ({ language, handleLookupTable }) => {
   useEffect(() => {
     if (data) {
       setNavigationArray(data.getNavigation)
+      handleLookupTable(data.getNavigation, '')
     }
   }, [data])
 
   if (navigationArray) {
-    handleLookupTable(navigationArray, '')
     return (
       <div className="sidebar block flex-wrap list-none" >
         <ul id="mysidebar">
