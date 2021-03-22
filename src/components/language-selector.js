@@ -13,24 +13,24 @@ const LanguageSelector = ({ language, handleSetLanguage }) => {
   const renderOptions = (languages) => {
     let options = []
     if (languages) {
-      options = languages.forEach(lang => {
-        if (lang.isActive) {
-          return <option key={lang.codename} value={lang.codename}>{lang.name}</option>
-        }
-      })
+      options = languages
+        .filter(lang => lang.is_active)
+        .map(lang => <option key={lang.codename} value={lang.codename}>{lang.name}</option>)
     }
     return options
   }
+
   if (loading) {
     return null;
+  } else {
+    return (
+      <div className="custom-select" style={{ border: 'solid #fe5e00 1px' }}>
+        <select value={language} onChange={e => handleSetLanguage(e.target.value)}>
+          {renderOptions(data.getLanguages.languages)}
+        </select>
+      </div >
+    )
   }
-  return (
-    <div className="custom-select" style={{ border: 'solid #fe5e00 1px' }}>
-      <select value={language} onChange={e => handleSetLanguage(e.target.value)}>
-        {renderOptions(data)}
-      </select>
-    </div >
-  )
 }
 
 export default LanguageSelector;

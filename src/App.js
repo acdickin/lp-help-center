@@ -25,7 +25,6 @@ const App = () => {
       document.body.classList.remove('light');
       document.body.classList.remove('dark');
       document.body.classList.add(mode);
-      // localStorage.setItem('jlmode', mode)
     }
   }, [mode])
 
@@ -46,7 +45,6 @@ const App = () => {
     })
   }
 
-  console.log(lookupTable)
   return (
     <>
       <head>
@@ -56,7 +54,7 @@ const App = () => {
         <div className="lp-container">
           <Header mode={mode} setMode={setMode} language={language} setLanguage={setLanguage} />
           <div className="flex grow">
-            <Sidebar language={language} />
+            <Sidebar language={language} handleLookupTable={createLookUptable} />
             <div className="flex column full-width">
               <Switch>
                 <Route exact path="/" component={Root} />

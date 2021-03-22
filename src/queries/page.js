@@ -1,8 +1,7 @@
 import { gql } from 'apollo-boost';
 const PAGE_QUERY = gql`
   query getPageQuery($id:ID, $languageCodeName:String!){
-    getPage(id: $id, languageCodeName: $codename){
-
+    getPage(id: $id, languageCodeName:  $languageCodeName){
       body{
         value
       }
