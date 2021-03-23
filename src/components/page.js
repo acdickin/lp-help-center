@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import ContentHeader from "./content-header"
 import NotFound from "./not-found"
 import { useQuery } from '@apollo/client'
@@ -21,7 +21,10 @@ const Page = ({ match, history, language, lookupTable, handleTitle }) => {
 const PageRender = ({ lang, id, handleTitle }) => {
 
   const { loading, error, data } = useQuery(PAGE_QUERY, { variables: { id: id, languageCodeName: lang } })
-  if (data) handleTitle(data.getPage.title.value);
+  useEffect(() => {
+    if (data) handleTitle(data.getPage.title.value);
+  }, [data])
+
   if (loading) {
     return <div className="flex align-center justify-center">Loading...</div>;
   } else if (error) {

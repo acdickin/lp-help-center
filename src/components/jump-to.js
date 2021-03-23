@@ -3,7 +3,6 @@ import $ from "jquery";
 
 const JumpTo = (props) => {
   if (props.title) {
-    // return (<div>{props.title}</div>)
     return <JumpToRender title={props.title} />
   }
   else {
@@ -26,31 +25,31 @@ const JumpToRender = ({ title }) => {
   // this only runs once on page load
   useEffect(() => {
     populateAnchors();
-  }, [])
+  }, [title])
 
-  useEffect(() => {
-    $(window).scroll(function () {
-      const mainTitlePostion = $('#maintitle').offset().top;
-      //check the window's position and account for the header
-      let position = $(this).scrollTop();
-      //for each h2 in the article
-      anchorList.forEach(anchor => {
-        //if the position of the window is greater than the position of the title (that is, the title has scrolled out of view)
-        if (position > anchor.pos) {
-          //deactivate all other active links in the anchorlist
-          $('.anchorlist > li ').removeClass('active');
-          $(`li[name=${anchor.id}]`).addClass('active')
-        } else if (position <= mainTitlePostion) {
-          $('.anchorlist > li ').removeClass('active');
-          $('.anchorlist > #jumptotop ').addClass('active');
-        }
-      });
-      if ($(window).scrollTop() + $(window).height() === $(document).height()) {
-        $('.anchorlist > li').removeClass('active');
-        $('.anchoritem').last().addClass('active');
-      };
-    });
-  })
+
+  // $(window).scroll(function () {
+  //   const mainTitlePostion = $('#maintitle').offset().top;
+  //   //check the window's position and account for the header
+  //   let position = $(this).scrollTop();
+  //   //for each h2 in the article
+  //   anchorList.forEach(anchor => {
+  //     //if the position of the window is greater than the position of the title (that is, the title has scrolled out of view)
+  //     if (position > anchor.pos) {
+  //       //deactivate all other active links in the anchorlist
+  //       $('.anchorlist > li ').removeClass('active');
+  //       $(`li[name=${anchor.id}]`).addClass('active')
+  //     } else if (position <= mainTitlePostion) {
+  //       $('.anchorlist > li ').removeClass('active');
+  //       $('.anchorlist > #jumptotop ').addClass('active');
+  //     }
+  //   });
+  //   if ($(window).scrollTop() + $(window).height() === $(document).height()) {
+  //     $('.anchorlist > li').removeClass('active');
+  //     $('.anchoritem').last().addClass('active');
+  //   };
+  // });
+
 
   const renderAnchorlist = () => {
     // cant have a tag as it breaks the onclick
