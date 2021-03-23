@@ -1,16 +1,16 @@
-import React from "react"
+import React, { useEffect } from "react"
 import ContentHeader from "./content-header"
 import NotFound from "./not-found"
 import { useQuery } from '@apollo/client'
 import { PAGE_QUERY } from '../queries/page'
 
-const Page = ({ match, history, language, lookupTable }) => {
+const Page = ({ match, history, language, lookupTable, handleTitle }) => {
 
   const basicSlug = match.params.slug.replace('.html', '')
   const id = lookupTable.size > 0 ? lookupTable.get(basicSlug) : null;
 
   if (language && id) {
-    return (<PageRender lang={language} id={id} />)
+    return (<PageRender lang={language} id={id} handleTitle={handleTitle} />)
   }
   else {
     return null
@@ -18,8 +18,13 @@ const Page = ({ match, history, language, lookupTable }) => {
 }
 
 // Can't call useQuery in conditional so created a sub component
-const PageRender = ({ lang, id }) => {
+const PageRender = ({ lang, id, handleTitle }) => {
+
   const { loading, error, data } = useQuery(PAGE_QUERY, { variables: { id: id, languageCodeName: lang } })
+  useEffect(() => {
+    if (data) handleTitle(data.getPage.title.value);
+  }, [data])
+
   if (loading) {
     return <div className="flex align-center justify-center">Loading...</div>;
   } else if (error) {
