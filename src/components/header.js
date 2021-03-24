@@ -1,5 +1,5 @@
 import React from "react";
-import Search from './search'
+import Search from './search/'
 import { Link } from "react-router-dom";
 import logo from "../images/lp-logo.svg";
 import LanguageSelector from "./language-selector";
