@@ -42,7 +42,7 @@ const App = () => {
       }
     });
   };
-
+  console.log(lookupTable)
   return (
     <>
       <head>
@@ -58,6 +58,7 @@ const App = () => {
             setMode={setMode}
             language={language}
             setLanguage={setLanguage}
+            lookupTable={lookupTable}
           />
           <div className="flex grow">
             <Sidebar language={language} handleLookupTable={createLookUptable} />
