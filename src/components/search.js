@@ -15,8 +15,6 @@ require("dotenv").config({
 
 const Search = ({ language, lookupTable }) => {
 
-  console.log(language)
-  console.log(lookupTable)
   if (language && lookupTable) {
     return (
       <RenderSearch language={language} lookupTable={lookupTable} />
