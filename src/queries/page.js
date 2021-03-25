@@ -22,6 +22,12 @@ const PAGE_QUERY = gql`
       product_description{
         value
       }
+      meta_keywords{
+        value
+      }
+      meta_description{
+        value
+      }
     }
   }
 `
