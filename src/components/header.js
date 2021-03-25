@@ -41,13 +41,6 @@ const Header = ({ setMode, mode, setLanguage, language }) => {
             </a>
           </span>
         </div>
-        {/* <a
-          href="https://knowledge.liveperson.com/"
-          className="casey flex items-center"
-        >
-          <img className="caseyPortrait m-0" src="img/open-casey-header.svg" />
-          <span className="text-white ml-2">CASEY</span>
-        </a> */}
       </div>
     </div>
   );
