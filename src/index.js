@@ -5,8 +5,9 @@ import reportWebVitals from './reportWebVitals';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/client';
 require("dotenv").config({
-  path: `../.env`,
+  path: `.env`,
 })
+
 const client = new ApolloClient({
   uri: "http://" + process.env.REACT_APP_BACKEND_URL,
 })

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react"
-import Header from "./components/header"
-import Footer from "./components/footer"
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Head from './components/head'
 import Page from "./components/page"
+import Header from "./components/header"
 import Sidebar from "./components/sidebar"
+import Footer from "./components/footer"
 import JumpTo from "./components/jump-to"
 import NotFound from "./components/not-found"
 import Root from "./components/root"
-
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import "./stylesheets/main.scss"
 
 const App = () => {

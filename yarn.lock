@@ -9750,6 +9750,11 @@ react-fontawesome@^1.7.1:
   dependencies:
     prop-types "^15.5.6"
 
+react-ga@^3.3.0:
+  version "3.3.0"
+  resolved "http://tlvmvnrepository:80/artifactory/api/npm/lp-npm-virtual/react-ga/-/react-ga-3.3.0.tgz#c91f407198adcb3b49e2bc5c12b3fe460039b3ca"
+  integrity sha1-yR9AcZityztJ4rxcErP+RgA5s8o=
+
 react-helmet@^6.1.0:
   version "6.1.0"
   resolved "http://tlvmvnrepository:80/artifactory/api/npm/lp-npm-virtual/react-helmet/-/react-helmet-6.1.0.tgz#a750d5165cb13cf213e44747502652e794468726"
@@ -9759,6 +9764,11 @@ react-helmet@^6.1.0:
     prop-types "^15.7.2"
     react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
+
+react-hotjar@^2.2.1:
+  version "2.2.1"
+  resolved "http://tlvmvnrepository:80/artifactory/api/npm/lp-npm-virtual/react-hotjar/-/react-hotjar-2.2.1.tgz#5f06d15a146960262dba612657c828c8b58da8a3"
+  integrity sha1-XwbRWhRpYCYtumEmV8goyLWNqKM=
 
 react-instantsearch-core@^6.10.3:
   version "6.10.3"
