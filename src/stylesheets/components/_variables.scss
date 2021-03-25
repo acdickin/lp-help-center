@@ -61,6 +61,13 @@ body.light {
   }
 }
 
+.section-space-sides {
+  padding: 0 var(--space16);
+  @media (max-width: 767px) {
+    padding: 0 var(--space10);
+  }
+}
+
 .navy {
   background-color: var(--navy);
 }

@@ -4,15 +4,15 @@
         position: sticky;
         top: 110px;
         & > li.categoryfolder {
-            .itemdetails:after {
-                transition: transform 0.25s ease-out;
-                content: "\f054";
-                font-size: 13px;
-                font-family: 'FontAwesome';
+            margin-bottom: 1rem;
+            &>div>span {
+                color: var(--textTitle);
+                transition: color .15s ease;
+                font-size: 1.3em;
+                font-weight: 700;
             }
             &>.canOpen:after {
                 transition: transform 0.25s ease-out;
-                content: "\f078";
             }
 
             .itemdetails {
@@ -24,3 +24,4 @@
         }
     }
 }
+

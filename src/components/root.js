@@ -53,17 +53,44 @@ const Root = () => {
         />
       </section>
       <div className="divider rotate-180"></div>
-      <section className="hero flex justify-between column gap-2 section-space">
+      <section className="hero flex justify-between column gap-2 section-space-sides">
         <div className="flex justify-between">
           <div className="flex column justify-center">
-            <h4>Our new Help Center</h4>
-            <h1>Kontent CMS POC</h1>
+            <h4>Latest what’s new</h4>
           </div>
           <div>
             <img
               alt="heroimg"
               src="https://d1hryyr5hiabsc.cloudfront.net/web2020/img/resources/book-resource-illo-rev.svg"
             />
+          </div>
+        </div>
+        <div className="box flex column-mobile">
+          <div className="flex">
+            <div className="box flex column-mobile">
+              <h3>
+                Watch this short video for the upcoming features for the weeks
+                ahead.
+              </h3>
+            </div>{" "}
+            <div className="box flex column-mobile">
+              <h3>
+                Watch this short video for the upcoming features for the weeks
+                ahead.
+              </h3>
+            </div>{" "}
+            <div className="box flex column-mobile">
+              <h3>
+                Watch this short video for the upcoming features for the weeks
+                ahead.
+              </h3>
+            </div>{" "}
+            <div className="box flex column-mobile">
+              <h3>
+                Watch this short video for the upcoming features for the weeks
+                ahead.
+              </h3>
+            </div>
           </div>
         </div>
       </section>
