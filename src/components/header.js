@@ -1,12 +1,15 @@
 import React from "react";
+import Search from './search/'
 import { Link } from "react-router-dom";
-// import Search from "./search"
 import logo from "../images/lp-logo.svg";
 import LanguageSelector from "./language-selector";
-
+require("dotenv").config({
+  path: `../.env`,
+})
 var FontAwesome = require("react-fontawesome");
 
-const Header = ({ setMode, mode, setLanguage, language }) => {
+const Header = ({ setMode, mode, setLanguage, language, lookupTable }) => {
+
   const handleMode = () => {
     return mode === "light" ? setMode("dark") : setMode("light");
   };
@@ -21,6 +24,7 @@ const Header = ({ setMode, mode, setLanguage, language }) => {
         </Link>
       </div>
       <div className="flex align-center justify-between gap">
+        <Search language={language} lookupTable={lookupTable} />
         <LanguageSelector
           handleSetLanguage={handleSetLanguage}
           language={language}
