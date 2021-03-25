@@ -7,7 +7,7 @@ const LanguageSelector = ({ language, handleSetLanguage }) => {
 
 
 
-  const { loading, data } = useQuery(LANGUAGES_QUERY)
+  const { loading, error, data } = useQuery(LANGUAGES_QUERY)
   // handleSetLanguage(data)
 
   const renderOptions = (languages) => {
@@ -20,8 +20,9 @@ const LanguageSelector = ({ language, handleSetLanguage }) => {
     return options
   }
 
-  if (loading) {
-    return null;
+  if (loading || error) {
+    // TODO reroute to error page if api gets no language
+    return null
   } else {
     return (
       <div className="custom-select" style={{ border: 'solid #fe5e00 1px' }}>
