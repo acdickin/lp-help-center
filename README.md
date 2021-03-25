@@ -3,7 +3,7 @@
 To run this project locally you will need to run the backend as well [lp-help-center-backend](https://github.com/acdickin/lp-help-center-backend)
 
 ## How to run help center
-[How to run help center] (https://docs.google.com/document/d/1hTT515G5AwE3rLbHW1fIIhcAsyjHYNbvaKnQWeH23I4/)
+[How to run help center](https://docs.google.com/document/d/1hTT515G5AwE3rLbHW1fIIhcAsyjHYNbvaKnQWeH23I4/)
 
 ## Available Scripts
 
