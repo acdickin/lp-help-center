@@ -1,16 +1,17 @@
-import React, { useEffect } from "react"
+import React from "react"
+import JumpTo from "./jump-to"
 import ContentHeader from "./content-header"
 import NotFound from "./not-found"
 import { useQuery } from '@apollo/client'
 import { PAGE_QUERY } from '../queries/page'
 
-const Page = ({ match, history, language, lookupTable, handleTitle }) => {
+const Page = ({ match, history, language, lookupTable }) => {
 
   const basicSlug = match.params.slug.replace('.html', '')
   const id = lookupTable.size > 0 ? lookupTable.get(basicSlug) : null;
 
   if (language && id) {
-    return (<PageRender lang={language} id={id} handleTitle={handleTitle} />)
+    return (<PageRender lang={language} id={id} />)
   }
   else {
     return null
@@ -18,12 +19,8 @@ const Page = ({ match, history, language, lookupTable, handleTitle }) => {
 }
 
 // Can't call useQuery in conditional so created a sub component
-const PageRender = ({ lang, id, handleTitle }) => {
-
+const PageRender = ({ lang, id }) => {
   const { loading, error, data } = useQuery(PAGE_QUERY, { variables: { id: id, languageCodeName: lang } })
-  useEffect(() => {
-    if (data) handleTitle(data.getPage.title.value);
-  }, [data])
 
   if (loading) {
     return <div className="flex align-center justify-center">Loading...</div>;
@@ -41,6 +38,7 @@ const PageRender = ({ lang, id, handleTitle }) => {
           />
           <div dangerouslySetInnerHTML={{ __html: body.value }} />
         </div>
+        <JumpTo title={title} />
       </div>
     )
   } else {

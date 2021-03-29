@@ -3,7 +3,6 @@ import Header from "./components/header"
 import Footer from "./components/footer"
 import Page from "./components/page"
 import Sidebar from "./components/sidebar"
-import JumpTo from "./components/jump-to"
 import NotFound from "./components/not-found"
 import Root from "./components/root"
 
@@ -15,7 +14,6 @@ const App = () => {
   const [mode, setMode] = useState('light')
   const [language, setLanguage] = useState('en')
   const [lookupTable, setLookupTable] = useState(new Map());
-  const [title, setTitle] = useState(null)
 
   // Handles setting dark/ light mode
   useEffect(() => {
@@ -70,7 +68,6 @@ const App = () => {
                   component={(props) => (
                     <Page
                       {...props}
-                      handleTitle={setTitle}
                       lookupTable={lookupTable}
                       language={language}
                     />
@@ -79,7 +76,6 @@ const App = () => {
                 <Route component={NotFound} />
               </Switch>
             </div>
-            <JumpTo title={title} />
           </div>
           <Footer />
         </div>
