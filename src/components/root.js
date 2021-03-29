@@ -8,7 +8,7 @@ const Root = () => {
       <section className="hero flex justify-between column gap-2 section-space">
         <div className="flex justify-between">
           <div className="flex column justify-center">
-            <h4>Our new Help Center</h4>
+            <h4 data-testid="root-title">Our new Help Center</h4>
             <h1>Kontent CMS POC</h1>
           </div>
           <div>
